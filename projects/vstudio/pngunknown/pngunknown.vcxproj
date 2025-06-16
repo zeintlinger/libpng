@@ -38,13 +38,13 @@
     <ProjectGuid>{C5D3156C-8C8C-4936-B35F-2B829BA36FEC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>pngunknown</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\zlib.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -169,7 +169,7 @@
     </Link>
     <CustomBuildStep>
       <Message>Executing PNG validation program</Message>
-      <Command>"$(OutDir)pngunknown.exe" --strict --default --touch "$(IntDir)pngunknown.out" ../../../pngtest.png</Command>
+      <Command>"$(OutDir)pngunknown.exe" --strict --default --touch "$(IntDir)pngunknown.out" $(SolutionDir)..\..\pngtest.png</Command>
       <Outputs>$(IntDir)pngunknown.out</Outputs>
       <Inputs>$(OutDir)pngunknown.exe</Inputs>
     </CustomBuildStep>

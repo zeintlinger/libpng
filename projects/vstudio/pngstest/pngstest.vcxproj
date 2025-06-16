@@ -38,13 +38,13 @@
     <ProjectGuid>{277AC57F-313B-4D06-B119-A3CDB672D2FF}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>pngstest</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
-  <Import Project="$(SolutionDir)\zlib.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -112,6 +112,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CustomBuildAfterTargets />
+    <IncludePath>$(SolutionDir)..\..\..\zlib\out\install\x86-Debug\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\..\..\zlib\out\install\x86-Debug\lib;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SolutionDir)..\..\..\zlib;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <LinkIncremental>false</LinkIncremental>
@@ -150,7 +153,7 @@
       <Optimization>Disabled</Optimization>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;PNG_USE_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ZLibSrcDir);..\..\..\scripts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\scripts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>$(DisableSpecificWarnings)</DisableSpecificWarnings>
       <CompileAsManaged>false</CompileAsManaged>
       <TreatWarningAsError>false</TreatWarningAsError>
@@ -164,12 +167,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libpng16.lib</AdditionalDependencies>
+      <AdditionalDependencies>zlibd.lib;libpng16.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
       <Message>Executing libpng simplified API test program</Message>
-      <Command>"$(OutDir)pngstest.exe" --strict --log --touch "$(IntDir)pngstest.out" ../../../contrib/pngsuite/basn0g01.png ../../../contrib/pngsuite/basn0g02.png ../../../contrib/pngsuite/basn0g04.png ../../../contrib/pngsuite/basn0g08.png ../../../contrib/pngsuite/basn0g16.png ../../../contrib/pngsuite/basn2c08.png ../../../contrib/pngsuite/basn2c16.png ../../../contrib/pngsuite/basn3p01.png ../../../contrib/pngsuite/basn3p02.png ../../../contrib/pngsuite/basn3p04.png ../../../contrib/pngsuite/basn3p08.png ../../../contrib/pngsuite/basn4a08.png ../../../contrib/pngsuite/basn4a16.png ../../../contrib/pngsuite/basn6a08.png ../../../contrib/pngsuite/basn6a16.png ../../../contrib/pngsuite/ftbbn0g01.png ../../../contrib/pngsuite/ftbbn0g02.png ../../../contrib/pngsuite/ftbbn0g04.png ../../../contrib/pngsuite/ftbbn2c16.png ../../../contrib/pngsuite/ftbbn3p08.png ../../../contrib/pngsuite/ftbgn2c16.png ../../../contrib/pngsuite/ftbgn3p08.png ../../../contrib/pngsuite/ftbrn2c08.png ../../../contrib/pngsuite/ftbwn0g16.png ../../../contrib/pngsuite/ftbwn3p08.png ../../../contrib/pngsuite/ftbyn3p08.png ../../../contrib/pngsuite/ftp0n0g08.png ../../../contrib/pngsuite/ftp0n2c08.png ../../../contrib/pngsuite/ftp0n3p08.png ../../../contrib/pngsuite/ftp1n3p08.png</Command>
+      <Command>"$(OutDir)pngstest.exe" --strict --log --touch "$(IntDir)pngstest.out" $(SolutionDir)..\..\contrib\pngsuite\basn0g01.png $(SolutionDir)..\..\contrib\pngsuite\basn0g02.png $(SolutionDir)..\..\contrib\pngsuite\basn0g04.png $(SolutionDir)..\..\contrib\pngsuite\basn0g08.png $(SolutionDir)..\..\contrib\pngsuite\basn0g16.png $(SolutionDir)..\..\contrib\pngsuite\basn2c08.png $(SolutionDir)..\..\contrib\pngsuite\basn2c16.png $(SolutionDir)..\..\contrib\pngsuite\basn3p01.png $(SolutionDir)..\..\contrib\pngsuite\basn3p02.png $(SolutionDir)..\..\contrib\pngsuite\basn3p04.png $(SolutionDir)..\..\contrib\pngsuite\basn3p08.png $(SolutionDir)..\..\contrib\pngsuite\basn4a08.png $(SolutionDir)..\..\contrib\pngsuite\basn4a16.png $(SolutionDir)..\..\contrib\pngsuite\basn6a08.png $(SolutionDir)..\..\contrib\pngsuite\basn6a16.png $(SolutionDir)..\..\contrib\pngsuite\ftbbn0g01.png $(SolutionDir)..\..\contrib\pngsuite\ftbbn0g02.png $(SolutionDir)..\..\contrib\pngsuite\ftbbn0g04.png $(SolutionDir)..\..\contrib\pngsuite\ftbbn2c16.png $(SolutionDir)..\..\contrib\pngsuite\ftbbn3p08.png $(SolutionDir)..\..\contrib\pngsuite\ftbgn2c16.png $(SolutionDir)..\..\contrib\pngsuite\ftbgn3p08.png $(SolutionDir)..\..\contrib\pngsuite\ftbrn2c08.png $(SolutionDir)..\..\contrib\pngsuite\ftbwn0g16.png $(SolutionDir)..\..\contrib\pngsuite\ftbwn3p08.png $(SolutionDir)..\..\contrib\pngsuite\ftbyn3p08.png $(SolutionDir)..\..\contrib\pngsuite\ftp0n0g08.png $(SolutionDir)..\..\contrib\pngsuite\ftp0n2c08.png $(SolutionDir)..\..\contrib\pngsuite\ftp0n3p08.png $(SolutionDir)..\..\contrib\pngsuite\ftp1n3p08.png</Command>
       <Outputs>$(IntDir)pngstest.out</Outputs>
       <Inputs>$(OutDir)pngstest.exe</Inputs>
     </CustomBuildStep>
